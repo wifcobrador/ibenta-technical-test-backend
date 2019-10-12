@@ -1,4 +1,4 @@
-package com.github.jenkinsx.quickstarts.springboot.rest.prometheus;
+package au.com.ibenta;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

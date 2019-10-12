@@ -1,4 +1,4 @@
-package com.github.jenkinsx.quickstarts.springboot.rest.prometheus;
+package au.com.ibenta;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -15,7 +15,7 @@ import static java.util.Collections.singletonMap;
 
 @SpringBootApplication
 @Controller
-public class RestPrometheusApplication {
+public class Application {
 
 	@Autowired
 	private MeterRegistry registry;
@@ -28,7 +28,7 @@ public class RestPrometheusApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestPrometheusApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
