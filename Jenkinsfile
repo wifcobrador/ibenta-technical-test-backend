@@ -21,7 +21,7 @@ pipeline {
       steps {
         container('maven') {
           sh "mvn versions:set -DnewVersion=$PREVIEW_VERSION"
-          sh "mvn install"
+          sh "mvn install -Dtemplate"
           sh "skaffold version"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"

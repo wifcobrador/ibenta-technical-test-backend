@@ -5,3 +5,8 @@ management:
         include: prometheus, health
       path-mapping:
         prometheus: metrics
+
+server:
+  port: 8080
+  error:
+    include-stacktrace: always

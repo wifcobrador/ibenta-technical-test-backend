@@ -9,6 +9,17 @@ Before starting please read https://www.12factor.net.
 - Java 11
 - Maven
 ---
+## Running template demo
+```
+mvn spring-boot:run -Dspring-boot.run.profiles=template
+```
+
+## Running template tests & build
+```
+mvn clean test -Dtemplate
+mvn clean install -Dtemplate
+```
+---
 ## How to use:
 Create a new repository for the new service. (e.g. `authentication-service`).
 
@@ -96,11 +107,6 @@ jx rsh -d
 ### Promote Environment
 ```
 jx promote --version v0.0.1 --env production --timeout 1h
-```
----
-## Running in development
-```
-mvn spring-boot:run
 ```
 ---
 ## Endpoints used by Kubernetes
