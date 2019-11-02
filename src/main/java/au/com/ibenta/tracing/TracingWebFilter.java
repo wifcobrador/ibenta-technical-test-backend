@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -16,13 +17,12 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.MonoOperator;
 import reactor.util.context.Context;
 
-import java.net.MalformedURLException;
 import java.util.Optional;
 import java.util.function.Function;
 
 import static java.lang.Long.toHexString;
 import static java.util.Optional.ofNullable;
-import static org.slf4j.LoggerFactory.*;
+import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.cloud.sleuth.instrument.web.TraceWebServletAutoConfiguration.TRACING_FILTER_ORDER;
 
 @Component
@@ -127,13 +127,9 @@ public class TracingWebFilter implements WebFilter {
             }
 
             private Optional<String> getServiceUrlFrom(final ServerWebExchange exchange) {
-                try {
-                    return Optional.ofNullable(exchange.getRequest().getURI().toURL().getFile());
-                } catch (MalformedURLException e) {
-                    log.error("Error getting service URL", e);
-                }
-
-                return Optional.empty();
+                return Optional.ofNullable(exchange)
+                        .map(ServerWebExchange::getRequest)
+                        .map(ServerHttpRequest::toString);
             }
         }
     }
