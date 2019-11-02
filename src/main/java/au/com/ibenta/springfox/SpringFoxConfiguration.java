@@ -1,13 +1,11 @@
 package au.com.ibenta.springfox;
 
-import au.com.ibenta.springfox.RecursiveAlternateTypeRule;
 import com.fasterxml.classmate.TypeResolver;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -26,7 +24,6 @@ import static java.util.Arrays.asList;
 import static java.util.Optional.ofNullable;
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
-@Profile("template")
 @Configuration
 @EnableSwagger2WebFlux
 public class SpringFoxConfiguration {
