@@ -8,4 +8,5 @@ import lombok.Data;
 public class Template {
 
     private String id;
+    private String name;
 }

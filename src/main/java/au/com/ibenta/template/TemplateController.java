@@ -19,7 +19,7 @@ public class TemplateController {
     Flux<Template> list() {
         return Flux.fromStream(IntStream.range(1, 11).boxed())
                 .map(String::valueOf)
-                .map(id -> Template.builder().id(id).build());
+                .map(id -> Template.builder().id(id).name(String.format("name: %s", id)).build());
     }
 
     @GetMapping("/{id}")
