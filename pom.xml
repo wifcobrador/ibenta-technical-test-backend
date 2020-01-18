@@ -27,6 +27,7 @@
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<problem-spring-webflux.version>0.25.0</problem-spring-webflux.version>
 		<springfox.version>3.0.0-SNAPSHOT</springfox.version>
+		<spring-plugin.version>2.0.0.RELEASE</spring-plugin.version>
 	</properties>
 
 	<repositories>
