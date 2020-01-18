@@ -5,10 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import org.springframework.web.reactive.config.EnableWebFlux;
 
 @Configuration
-public class WebConfiguration  {
+public class WebConfiguration {
 
     @Bean
     CorsWebFilter corsWebFilter() {
