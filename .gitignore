@@ -24,3 +24,9 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### logs
+*.log
+
+### env
+env.json
