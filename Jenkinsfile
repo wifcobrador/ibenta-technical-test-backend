@@ -6,7 +6,7 @@ pipeline {
     ORG = 'ibenta'
     APP_NAME = 'springboot-template'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
-    DOCKER_REGISTRY_ORG = 'ibenta'
+    DOCKER_REGISTRY_ORG = 'sesinando2'
   }
   stages {
     stage('CI Build and push snapshot') {
