@@ -3,7 +3,7 @@ pipeline {
     label "jenkins-maven-java11"
   }
   environment {
-    ORG = 'ibenta'
+    ORG = 'sesinando2'
     APP_NAME = 'springboot-template'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
     DOCKER_REGISTRY_ORG = 'sesinando2'
