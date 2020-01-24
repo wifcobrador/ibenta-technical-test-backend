@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: ibenta/springboot-template
+  - image: sesinando2/springboot-template
     context: .
     docker: {}
   tagPolicy:
