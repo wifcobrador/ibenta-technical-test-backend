@@ -51,6 +51,8 @@ service:
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/actuator/metrics'
 resources:
   limits:
     cpu: 500m
