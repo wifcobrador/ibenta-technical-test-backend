@@ -6,7 +6,6 @@ import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.MonoOperator;
 import reactor.util.context.Context;
 
-import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.util.Optional;
 import java.util.function.Function;
@@ -38,20 +36,7 @@ public class TracingWebFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(final ServerWebExchange exchange, final WebFilterChain chain) {
-        final var source = log(exchange.getRequest()).then(chain.filter(exchange));
-        return new TracingWebFilterMono(source, exchange).subscriberContext(setTraceHeaders(exchange));
-    }
-
-    private Mono<String> log(final ServerHttpRequest request) {
-        final var bos = new ByteArrayOutputStream();
-        final var method = request.getMethod();
-        final var url = request.getURI().toString();
-        return DataBufferUtils.write(request.getBody(), bos).collectList().
-                map(r -> bos)
-                .map(ByteArrayOutputStream::toByteArray)
-                .map(String::new)
-                .map(String::trim)
-                .doOnNext(content -> log.info("{} {} {}", method, url, content));
+        return new TracingWebFilterMono(chain.filter(exchange), exchange).subscriberContext(setTraceHeaders(exchange));
     }
 
     private Function<Context, Context> setTraceHeaders(final ServerWebExchange exchange) {
