@@ -26,9 +26,8 @@ pipeline {
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
 
           script {
-            def buildVersion = readFile "${env.WORKSPACE}/VERSION"
-            currentBuild.displayName = "$buildVersion"
-            currentBuild.description = "$APP_NAME $buildVersion"
+            currentBuild.displayName = PREVIEW_VERSION
+            currentBuild.description = "$APP_NAME $PREVIEW_VERSION"
           }
 
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
