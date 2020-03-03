@@ -24,6 +24,13 @@ pipeline {
           sh "mvn install -Dtemplate"
           sh "skaffold version"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
+
+          script {
+            def buildVersion = readFile "${env.WORKSPACE}/VERSION"
+            currentBuild.displayName = "$buildVersion"
+            currentBuild.description = "$APP_NAME $buildVersion"
+          }
+
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
           dir('charts/preview') {
             sh "make preview"
@@ -53,8 +60,8 @@ pipeline {
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
 
           script {
-            def buildVersion = readFile 'VERSION'
-            currentBuild.name = buildVersion
+            def buildVersion = readFile "${env.WORKSPACE}/VERSION"
+            currentBuild.displayName = "$buildVersion"
             currentBuild.description = "$APP_NAME $buildVersion"
           }
 
