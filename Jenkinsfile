@@ -53,7 +53,7 @@ pipeline {
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
 
           script {
-            def buildVersion = readFile "${env.WORKSPACE}/VERSION"
+            def buildVersion = readFile 'VERSION'
             currentBuild.name = buildVersion
             currentBuild.description = "$APP_NAME $buildVersion"
           }
