@@ -3,10 +3,10 @@ pipeline {
     label "jenkins-maven-java11"
   }
   environment {
-    ORG = 'sesinando2'
+    ORG = 'ibenta'
     APP_NAME = 'springboot-template'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
-    DOCKER_REGISTRY_ORG = 'sesinando2'
+    DOCKER_REGISTRY_ORG = 'ibenta'
   }
   stages {
     stage('CI Build and push snapshot') {
