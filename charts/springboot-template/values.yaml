@@ -24,7 +24,7 @@ hpa:
 # VerticalPodAutoscaler
 vpa:
   enabled: true
-  updateMode: "Off"
+  updateMode: Off
 
 # PodDisruptionBudget
 podDisruptionBudget:
