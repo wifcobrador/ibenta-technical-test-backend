@@ -11,4 +11,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: {{ template "fullname" . }}
+  updatePolicy:
+    updateMode: {{ .Values.vpa.updateMode }}
 {{- end }}
