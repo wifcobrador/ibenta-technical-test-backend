@@ -21,6 +21,10 @@ hpa:
   cpuTargetAverageUtilization: 80
   memoryTargetAverageUtilization: 80
 
+# VerticalPodAutoscaler
+vpa:
+  enabled: true
+
 # PodDisruptionBudget
 podDisruptionBudget:
   enabled: true
