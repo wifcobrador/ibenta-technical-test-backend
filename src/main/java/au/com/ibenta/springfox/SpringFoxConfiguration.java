@@ -32,9 +32,7 @@ public class SpringFoxConfiguration {
     private final BuildProperties buildProperties;
 
     public SpringFoxConfiguration(final TypeResolver resolver,
-
-                                  @Autowired(required = false)
-                                 final BuildProperties buildProperties) {
+                                  @Autowired(required = false) final BuildProperties buildProperties) {
         this.resolver = resolver;
         this.buildProperties = buildProperties;
     }

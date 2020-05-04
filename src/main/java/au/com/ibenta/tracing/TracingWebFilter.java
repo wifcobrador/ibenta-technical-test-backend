@@ -66,7 +66,7 @@ public class TracingWebFilter implements WebFilter {
             source.subscribe(new TracingWebFilterSubscriber(actual, context, exchange));
         }
 
-        private final class TracingWebFilterSubscriber implements CoreSubscriber<Void> {
+        private static final class TracingWebFilterSubscriber implements CoreSubscriber<Void> {
 
             private static final String SERVICE_URL = "serviceUrl";
 
