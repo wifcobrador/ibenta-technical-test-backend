@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.2.RELEASE</version>
+		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -24,10 +24,11 @@
 
 		<java.version>11</java.version>
 		<reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+		<spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
 		<problem-spring-webflux.version>0.25.0</problem-spring-webflux.version>
 		<springfox.version>3.0.0-SNAPSHOT</springfox.version>
 		<spring-plugin.version>2.0.0.RELEASE</spring-plugin.version>
+		<spring-cloud-contract.version>2.2.4.RELEASE</spring-cloud-contract.version>
 	</properties>
 
 	<repositories>
@@ -164,6 +165,18 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-web-test-client</artifactId>
+			<version>${rest-assured.version}</version>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- // Test Dependencies -->
 	</dependencies>
 
@@ -250,6 +263,17 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<testFramework>JUNIT5</testFramework>
+					<testMode>WEBTESTCLIENT</testMode>
+					<baseClassForTests>au.com.ibenta.template.BaseTestClass</baseClassForTests>
+				</configuration>
 			</plugin>
 
 			<plugin>
