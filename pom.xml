@@ -271,6 +271,7 @@
 					<consoleOutput>true</consoleOutput>
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
+					<excludes>**/persistence/**</excludes>
 				</configuration>
 				<executions>
 					<execution>
@@ -298,6 +299,7 @@
 					<encoding>UTF-8</encoding>
 					<outputEncoding>UTF-8</outputEncoding>
 					<includeTests>false</includeTests>
+					<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
 				</configuration>
 				<executions>
 					<execution>
