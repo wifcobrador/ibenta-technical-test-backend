@@ -6,16 +6,14 @@ import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@ActiveProfiles(value = {"template", "test"})
 @DisplayName("test template endpoints")
-@WebFluxTest(controllers = {TemplateController.class, TemplateErrorController.class})
+@AutoConfigureWebTestClient
 @DisabledIf("systemProperty.get('template') == null")
-public class TemplateControllerTests {
+public class TemplateControllerTests extends BaseTestClass {
 
     @Autowired
     private WebTestClient webTestClient;
