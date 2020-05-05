@@ -13,7 +13,7 @@ import static java.lang.String.format;
 @ActiveProfiles(value = {"template", "test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureStubRunner(
-        ids = {"au.com.ibenta:springboot-template"},
+        ids = {"au.com.ibenta:springboot-template:+:stubs"},
         stubsMode = StubRunnerProperties.StubsMode.LOCAL
 )
 public abstract class BaseTestConsumerClass {
