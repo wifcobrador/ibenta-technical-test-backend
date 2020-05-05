@@ -2,7 +2,6 @@ package au.com.ibenta.template;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @DisplayName("test template endpoints")
 @AutoConfigureWebTestClient
-@DisabledIf("systemProperty.get('template') == null")
 public class TemplateControllerTests extends BaseTestClass {
 
     @Autowired
