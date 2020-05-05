@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerPort;
-import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -12,10 +11,7 @@ import static java.lang.String.format;
 
 @ActiveProfiles(value = {"template", "test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureStubRunner(
-        ids = {"au.com.ibenta:springboot-template:+:stubs"},
-        stubsMode = StubRunnerProperties.StubsMode.LOCAL
-)
+@AutoConfigureStubRunner(ids = "au.com.ibenta:springboot-template:+:stubs")
 public abstract class BaseTestConsumerClass {
 
     @StubRunnerPort("springboot-template")

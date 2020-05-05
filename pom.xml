@@ -198,6 +198,7 @@
 			<artifactId>springboot-template</artifactId>
 			<version>0.0.85</version>
 			<scope>test</scope>
+			<classifier>stubs</classifier>
 		</dependency>
 		<!-- // Test Dependencies -->
 	</dependencies>
