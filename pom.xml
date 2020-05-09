@@ -318,7 +318,8 @@
 					<consoleOutput>true</consoleOutput>
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
-					<excludes>**/persistence/**</excludes>
+					<excludes>**/persistence/**,**/ContractVerifierTest.java</excludes>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
 				</configuration>
 				<executions>
 					<execution>
@@ -347,6 +348,7 @@
 					<outputEncoding>UTF-8</outputEncoding>
 					<includeTests>false</includeTests>
 					<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+					<includeTests>true</includeTests>
 				</configuration>
 				<executions>
 					<execution>

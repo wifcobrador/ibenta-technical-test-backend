@@ -9,6 +9,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
+import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
+
 @Configuration
 public class WebConfiguration {
 
@@ -23,8 +26,9 @@ public class WebConfiguration {
 
     @Bean
     public Jackson2ObjectMapperBuilder configureObjectMapper() {
-        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        ObjectMapper objectMapper = new ObjectMapper();
+        final var builder = new Jackson2ObjectMapperBuilder();
+        final var objectMapper = new ObjectMapper();
+        objectMapper.disable(WRITE_DATES_AS_TIMESTAMPS).configure(FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.registerModule(new JavaTimeModule());
         builder.configure(objectMapper);
         return builder;
