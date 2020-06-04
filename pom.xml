@@ -196,7 +196,7 @@
 		<dependency>
 			<groupId>au.com.ibenta</groupId>
 			<artifactId>springboot-template</artifactId>
-			<version>LATEST</version>
+			<version>0.0.98</version>
 			<scope>test</scope>
 			<classifier>stubs</classifier>
 		</dependency>
