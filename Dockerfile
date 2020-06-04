@@ -11,4 +11,4 @@ COPY pom.xml target/lib* /opt/lib/
 # we could do with a better way to know the name - or to always create an app.jar or something
 COPY target/*-app.jar /opt/app.jar
 WORKDIR /opt
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-XX:InitialRAMPercentage=75.0", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
