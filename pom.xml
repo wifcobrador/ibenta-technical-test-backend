@@ -193,13 +193,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>au.com.ibenta</groupId>
 			<artifactId>springboot-template</artifactId>
 			<version>RELEASE</version>
 			<scope>test</scope>
 			<classifier>stubs</classifier>
-		</dependency>
+		</dependency>-->
 		<!-- // Test Dependencies -->
 	</dependencies>
 
