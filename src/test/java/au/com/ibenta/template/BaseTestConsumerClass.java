@@ -1,6 +1,7 @@
 package au.com.ibenta.template;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerPort;
@@ -9,6 +10,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static java.lang.String.format;
 
+@Disabled
 @ActiveProfiles(value = {"template", "test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureStubRunner(ids = "au.com.ibenta:springboot-template:+:stubs")
