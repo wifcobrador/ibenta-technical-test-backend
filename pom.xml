@@ -288,7 +288,7 @@
 				<version>3.0.0-M1</version>
 			</plugin>
 
-			<plugin>
+			<!--<plugin>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
 				<extensions>true</extensions>
@@ -297,7 +297,7 @@
 					<testMode>WEBTESTCLIENT</testMode>
 					<baseClassForTests>au.com.ibenta.template.BaseTestClass</baseClassForTests>
 				</configuration>
-			</plugin>
+			</plugin>-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
