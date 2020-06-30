@@ -44,7 +44,9 @@ public class SpringFoxConfiguration {
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .alternateTypeRules(monoTypeRule())
+                .alternateTypeRules(fluxTypeRule());
     }
 
     private RecursiveAlternateTypeRule monoTypeRule() {
