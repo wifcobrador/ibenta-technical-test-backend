@@ -27,6 +27,7 @@
 		<spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
 		<problem-spring-webflux.version>0.25.0</problem-spring-webflux.version>
 		<springfox.version>3.0.0-SNAPSHOT</springfox.version>
+		<springfox-swagger-ui.version>2.10.5</springfox-swagger-ui.version>
 		<spring-plugin.version>2.0.0.RELEASE</spring-plugin.version>
 		<spring-cloud-contract.version>2.2.4.RELEASE</spring-cloud-contract.version>
 	</properties>
@@ -81,23 +82,13 @@
 		<!-- SpringFox Dependencies -->
 		<dependency>
 			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
+			<artifactId>springfox-boot-starter</artifactId>
 			<version>${springfox.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${springfox.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-webflux</artifactId>
-			<version>${springfox.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-integration-webflux</artifactId>
-			<version>${springfox.version}</version>
+			<version>${springfox-swagger-ui.version}</version>
 		</dependency>
 		<!-- // SpringFox Dependencies -->
 

@@ -11,11 +11,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.schema.WildcardType;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +25,7 @@ import static java.util.Optional.ofNullable;
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
 @Configuration
-@EnableSwagger2WebFlux
+@EnableOpenApi
 public class SpringFoxConfiguration {
 
     private final TypeResolver resolver;
