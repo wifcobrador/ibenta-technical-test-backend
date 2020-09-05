@@ -36,7 +36,7 @@
 		<repository>
 			<id>ibenta-releases</id>
 			<name>iBenta Releases</name>
-			<url>http://nexus.ibenta.com.au/repository/maven-releases</url>
+			<url>http://nexus.ibenta.com/repository/maven-releases</url>
 		</repository>
 		<repository>
 			<id>jcenter-snapshots</id>
