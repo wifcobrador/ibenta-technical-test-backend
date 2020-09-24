@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: ibenta/springboot-template
+  - image: sesinando2/ibenta-technical-test-backend
     context: .
     docker: {}
   tagPolicy:
@@ -21,8 +21,8 @@ profiles:
   deploy:
     helm:
       releases:
-      - name: springboot-template
-        chartPath: charts/springboot-template
+      - name: ibenta-technical-test-backend
+        chartPath: charts/ibenta-technical-test-backend
         setValueTemplates:
           image.repository: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}'
           image.tag: '{{.DIGEST_HEX}}'

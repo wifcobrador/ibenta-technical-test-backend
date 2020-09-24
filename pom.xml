@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>au.com.ibenta</groupId>
-	<artifactId>springboot-template</artifactId>
+	<artifactId>ibenta-technical-test-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springboot-template</name>
+	<name>ibenta-technical-test-backend</name>
 	<description>Template project for Spring Boot</description>
 
 	<parent>
@@ -161,36 +161,6 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>spring-web-test-client</artifactId>
-			<version>${rest-assured.version}</version>
-			<scope>test</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>au.com.ibenta</groupId>
-			<artifactId>springboot-template</artifactId>
-			<version>RELEASE</version>
-			<scope>test</scope>
-			<classifier>stubs</classifier>
-		</dependency>
 		<!-- // Test Dependencies -->
 	</dependencies>
 
@@ -277,17 +247,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M1</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<testFramework>JUNIT5</testFramework>
-					<testMode>WEBTESTCLIENT</testMode>
-					<baseClassForTests>au.com.ibenta.template.BaseTestClass</baseClassForTests>
-				</configuration>
 			</plugin>
 
 			<plugin>

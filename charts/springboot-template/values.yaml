@@ -52,7 +52,7 @@ canary:
   host: acme.com
 
 service:
-  name: springboot-template
+  name: ibenta-technical-test-backend
   type: ClusterIP
   externalPort: 80
   internalPort: 8080

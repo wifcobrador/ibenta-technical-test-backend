@@ -3,8 +3,8 @@ pipeline {
     label "jenkins-maven-java11"
   }
   environment {
-    ORG = 'ibenta'
-    APP_NAME = 'springboot-template'
+    ORG = 'sesinando2'
+    APP_NAME = 'ibenta-technical-test-backend'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
     DOCKER_REGISTRY_ORG = 'ibenta'
   }
@@ -74,7 +74,7 @@ pipeline {
       }
       steps {
         container('maven') {
-          dir('charts/springboot-template') {
+          dir('charts/ibenta-technical-test-backend') {
             sh "jx step changelog --version v\$(cat ../../VERSION)"
 
             // release the helm chart
