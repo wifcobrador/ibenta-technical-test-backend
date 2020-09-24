@@ -1,0 +1,12 @@
+spring:
+  profiles:
+  datasource:
+    url: "jdbc:h2:mem:campaign;INIT=CREATE domain IF NOT EXISTS jsonb AS other;"
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  test:
+    database:
+      replace: none
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

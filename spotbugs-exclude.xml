@@ -2,4 +2,7 @@
     <Match>
         <Package name="~.*\.persistence\..*"/>
     </Match>
+    <Match>
+        <Bug pattern="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
 </FindBugsFilter>

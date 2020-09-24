@@ -21,6 +21,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
+		<liquibase.changelog.name>changelog</liquibase.changelog.name>
 
 		<java.version>11</java.version>
 		<reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
@@ -30,6 +33,18 @@
 		<springfox-swagger-ui.version>2.10.5</springfox-swagger-ui.version>
 		<spring-plugin.version>2.0.0.RELEASE</spring-plugin.version>
 		<spring-cloud-contract.version>2.2.4.RELEASE</spring-cloud-contract.version>
+
+		<hibernate-jpamodelgen.version>5.2.12.Final</hibernate-jpamodelgen.version>
+		<hibernate-types.version>2.9.8</hibernate-types.version>
+
+		<!-- Liquibase Plugin -->
+		<spring.version>5.1.14.RELEASE</spring.version>
+		<liquibase.version>3.8.7</liquibase.version>
+		<hibernate.version>5.4.12.Final</hibernate.version>
+		<liquibase-hibernate.version>3.8</liquibase-hibernate.version>
+		<liquibase-maven-plugin.version>3.8.7</liquibase-maven-plugin.version>
+		<validation-api.version>2.0.1.Final</validation-api.version>
+		<!-- // Liquibase Plugin -->
 	</properties>
 
 	<repositories>
@@ -105,6 +120,43 @@
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
 		<!-- // Tracing Dependencies -->
+
+		<!-- Persistence -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vladmihalcea</groupId>
+			<artifactId>hibernate-types-52</artifactId>
+			<version>${hibernate-types.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+		</dependency>
+		<!-- // Persistence -->
 
 		<!-- Dev Dependencies -->
 		<dependency>
@@ -296,7 +348,6 @@
 				<configuration>
 					<encoding>UTF-8</encoding>
 					<outputEncoding>UTF-8</outputEncoding>
-					<includeTests>false</includeTests>
 					<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
 					<includeTests>true</includeTests>
 				</configuration>
@@ -311,6 +362,83 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.liquibase</groupId>
+					<artifactId>liquibase-maven-plugin</artifactId>
+					<version>3.8.9</version>
+					<configuration>
+						<propertyFileWillOverride>true</propertyFileWillOverride>
+						<propertyFile>src/main/resources/liquibase.yml</propertyFile>
+						<diffChangeLogFile>
+							src/main/resources/db/changelog/migrations/${maven.build.timestamp}-${liquibase.changelog.name}.yaml
+						</diffChangeLogFile>
+						<logging>debug</logging>
+						<verbose>true</verbose>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.liquibase</groupId>
+							<artifactId>liquibase-core</artifactId>
+							<version>${liquibase.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.hibernate</groupId>
+							<artifactId>hibernate-core</artifactId>
+							<version>${hibernate.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.liquibase.ext</groupId>
+							<artifactId>liquibase-hibernate5</artifactId>
+							<version>${liquibase-hibernate.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-jdbc</artifactId>
+							<version>${spring.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-core</artifactId>
+							<version>${spring.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-beans</artifactId>
+							<version>${spring.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-context</artifactId>
+							<version>${spring.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.springframework</groupId>
+							<artifactId>spring-orm</artifactId>
+							<version>${spring.version}</version>
+						</dependency>
+
+						<dependency>
+							<groupId>javax.validation</groupId>
+							<artifactId>validation-api</artifactId>
+							<version>${validation-api.version}</version>
+						</dependency>
+
+						<dependency>
+							<groupId>com.vladmihalcea</groupId>
+							<artifactId>hibernate-types-52</artifactId>
+							<version>${hibernate-types.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>com.fasterxml.jackson.module</groupId>
+							<artifactId>jackson-module-jaxb-annotations</artifactId>
+							<version>2.10.3</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
