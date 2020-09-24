@@ -1,0 +1,45 @@
+databaseChangeLog:
+- changeSet:
+    id: 1600960367989-1
+    author: nando (generated)
+    changes:
+    - createSequence:
+        incrementBy: 1
+        sequenceName: hibernate_sequence
+        startValue: 1
+- changeSet:
+    id: 1600960367989-2
+    author: nando (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: UserEntityPK
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: firstName
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: lastName
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: password
+            type: VARCHAR(255)
+        tableName: UserEntity
+
