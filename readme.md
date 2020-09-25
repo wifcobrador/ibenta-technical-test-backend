@@ -1,16 +1,18 @@
  # Ibenta Technical Test (Backend)
 
 Welcome to the Ibenta Technical Test for Backend Developers. Please make sure you have a GitHub account and you have
-a write access to this repo.
+access to this repo.
 
 #### To do this test:
-1. Clone this repo
+1. Fork this repo to you account
 1. Create a branch: `feature/<Your Name in Kebab Case>-<Todays Date>` e.g. `feature/john-smith-25-09-2020`
 1. Push all your changes in that branch.
-1. Create a PR. This will run the build and creates a [preview environment](https://jenkins-x.io/docs/build-test-preview/preview)
-1. Notify the parties involved and send a link to your PR.
+1. When you're done with the test, create a pull request.
+1. Send me the link of your pull request. Make sure I have access to your repo and PR.
 
-#### Junior Level:
+> Note: This stack is built in SpringBoot, WebFlux, Java 11, Hibernate. It's using H2 as the database engine.
+
+#### Level 1:
 1. Create a new class `UserService` under `au.com.ibenta.test.service`.
 1. Implement the following methods with the following specifications:
     1. `create` - Creates a new user and saves it in the database.
@@ -22,8 +24,8 @@ a write access to this repo.
 Bonus: If you can write tests for this service please do so.
 
 ---
-#### Mid Level:    
-1. Do all the steps in the `Junior Level`
+#### Level 2:    
+1. Do all the steps in the `Level 1` but you will have to implement them using webflux/reactor.
 1. Create rest controller `UserController` under `au.com.ibenta.test.service`.
 1. Implement the following methods with the following specifications: (Please try to define the API endpoints accordingly following Standard ReST)
     1. `create` - Exposes the `create` method from `UserService`. Returns HTTP 201 and the UserEntity on success.
@@ -35,8 +37,8 @@ Bonus: If you can write tests for this service please do so.
 Bonus: If you can write tests please do so.
 
 ---    
-#### Senior Level:
-1. Do all the steps in the `Junior Level` & `Mid Level`
+#### Level 3:
+1. Do all the steps in the `Level 1` & `Level 2`. Make sure it's using webflux/reactor.
 1. Create a DTO instead of returning the `UserEntity` directly. Name the DTO `User` and put it under `au.com.ibenta.test.model`
 1. Add some validations:
     1. `firstName` is required
@@ -53,12 +55,11 @@ Bonus: If you can write tests please do so.
 ---
 ## Running the app
 ```
-mvn spring-boot:run
+mvn clean spring-boot:run
 ```
 
-## Running template tests & build
+## Running the tests and build
 ```
-mvn clean test
 mvn clean install
 ```
 ---
