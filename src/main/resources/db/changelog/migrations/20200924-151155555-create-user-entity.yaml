@@ -29,17 +29,17 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
-            name: firstName
+            name: first_name
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
-            name: lastName
+            name: last_name
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             name: password
             type: VARCHAR(255)
-        tableName: UserEntity
+        tableName: user
 
