@@ -48,6 +48,8 @@ Bonus: If you can write tests please do so.
 1. Create an endpoint that will return the response from this URL. `http://authentication-service.staging.ibenta.com/actuator/health`.
 1. Write unit/integration to cover as much as you can.
 
+Bonus: Implement a PATCH update on user (Partial update).
+
 ## Requirements:
 - GitHub Account
 - Java 11
