@@ -5,6 +5,8 @@ import au.com.ibenta.test.persistence.UserEntity;
 import au.com.ibenta.test.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -18,18 +20,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserEntity save(User user) {
+    public Mono<UserEntity> save(User user) {
         UserEntity userEntity = new UserEntity(user);
-        return userRepository.save(userEntity);
+        return Mono.just(userRepository.save(userEntity));
     }
 
-    public UserEntity getById(final Long id) {
-        return userRepository.getById(id);
+    public Mono<UserEntity> getById(final Long id) {
+        return Mono.just(userRepository.getById(id));
     }
 
-    public UserEntity update(final Long id, User user) {
+    public Mono<UserEntity> update(final Long id, User user) {
         UserEntity userEntity = new UserEntity(user, id);
-        return userRepository.save(userEntity);
+        return Mono.just(userRepository.save(userEntity));
     }
 
     public void delete(final Long id) {
@@ -37,8 +39,8 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public List<UserEntity> findAll() {
-        return userRepository.findAll();
+    public Flux<List<UserEntity>> findAll() {
+        return Flux.just(userRepository.findAll());
     }
 
 }

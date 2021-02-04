@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -23,28 +25,28 @@ public class UserController {
     }
 
     @PostMapping("")
-    ResponseEntity<UserEntity> createUser(@RequestBody User user) {
+    ResponseEntity<Mono<UserEntity>> createUser(@RequestBody User user) {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<UserEntity> getUser(@PathVariable("id") final Long id) {
+    ResponseEntity<Mono<UserEntity>> getUser(@PathVariable("id") final Long id) {
         return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<UserEntity> updateUser(@PathVariable("id") final Long id, @RequestBody User user) {
+    ResponseEntity<Mono<UserEntity>> updateUser(@PathVariable("id") final Long id, @RequestBody User user) {
         return new ResponseEntity<>(userService.update(id, user), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<UserEntity> deleteUser(@PathVariable("id") final Long id) {
+    ResponseEntity<Mono<UserEntity>> deleteUser(@PathVariable("id") final Long id) {
         userService.delete(id);
-        return new ResponseEntity<>(new UserEntity(), HttpStatus.CREATED);
+        return new ResponseEntity<>(Mono.empty(), HttpStatus.CREATED);
     }
 
     @GetMapping("")
-    ResponseEntity<List<UserEntity>> list() {
-        return new ResponseEntity<>(userService.findAll(), HttpStatus.CREATED);
+    ResponseEntity<Flux<List<UserEntity>>> list() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 }
